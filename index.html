@@ -1,0 +1,1124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Paragon Grid Studio — Trust-first websites for Houston's best local businesses</title>
+<meta name="description" content="Paragon Grid Studio designs beautiful, trust-first websites for Houston businesses with strong reputations." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F2EA; --cream-2:#EFE7D9; --ink:#111014; --ink-2:#2A2721;
+    --muted:#6B6357; --line:#E3D9C6; --peach:#FF8A5B; --gold:#C9A25A;
+    --sage:#7A8A6F; --sky:#A9C4D9; --plum:#5B3A57;
+  }
+  html,body{background:var(--cream);color:var(--ink);}
+  body{font-family:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+  .font-display{font-family:'Fraunces',ui-serif,Georgia,serif;font-optical-sizing:auto;letter-spacing:-0.02em;}
+  .font-serif-it{font-family:'Instrument Serif',serif;font-style:italic;}
+  .grain{position:relative;}
+  .grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.06;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");}
+  .hairline{border-color:var(--line);}
+  .muted{color:var(--muted);}
+  .bg-cream{background:var(--cream);}
+  .bg-cream2{background:var(--cream-2);}
+  .bg-ink{background:var(--ink);}
+  .chip{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .75rem;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.55);backdrop-filter:blur(8px);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);}
+  .dot{width:6px;height:6px;border-radius:999px;background:var(--peach);box-shadow:0 0 0 4px rgba(255,138,91,.15);}
+  .btn-primary{background:var(--ink);color:var(--cream);padding:.95rem 1.4rem;border-radius:999px;font-weight:500;display:inline-flex;align-items:center;gap:.6rem;transition:transform .3s ease, background .3s ease;}
+  .btn-primary:hover{transform:translateY(-1px);background:#000;}
+  .btn-ghost{padding:.95rem 1.4rem;border-radius:999px;font-weight:500;display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--line);color:var(--ink);background:rgba(255,255,255,.4);backdrop-filter:blur(8px);}
+  .btn-ghost:hover{background:rgba(255,255,255,.7);}
+  .shadow-soft{box-shadow:0 1px 0 rgba(17,16,20,.04),0 30px 60px -30px rgba(17,16,20,.18),0 8px 20px -12px rgba(17,16,20,.12);}
+  .mesh{background:
+    radial-gradient(60% 50% at 15% 20%, #FFD7B5 0%, transparent 60%),
+    radial-gradient(50% 45% at 85% 10%, #F6C6D0 0%, transparent 60%),
+    radial-gradient(55% 50% at 80% 85%, #C9DCC5 0%, transparent 60%),
+    radial-gradient(45% 40% at 20% 90%, #F3E2B8 0%, transparent 60%),
+    linear-gradient(180deg,#FBF6EC 0%, #F4EADA 100%);}
+  .mesh-2{background:
+    radial-gradient(40% 40% at 80% 20%, #FFD7B5 0%, transparent 60%),
+    radial-gradient(40% 40% at 10% 80%, #C9DCC5 0%, transparent 60%),
+    linear-gradient(180deg,#FBF6EC 0%, #F4EADA 100%);}
+  .ticker{display:flex;gap:3rem;animation:tick 40s linear infinite;}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  /* Safety: if JS is disabled or slow, show everything after 1.2s */
+  @keyframes pg-show{to{opacity:1;transform:none;}}
+  .reveal{animation:pg-show 0s ease 1.5s forwards;}
+  .frame{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 40px 80px -40px rgba(17,16,20,.25),0 10px 30px -12px rgba(17,16,20,.12);}
+  .frame .bar{display:flex;align-items:center;gap:.4rem;padding:.6rem .8rem;background:#F3ECDD;border-bottom:1px solid var(--line);}
+  .frame .bar i{width:9px;height:9px;border-radius:999px;background:#E2D6BF;display:inline-block;}
+  .frame .bar i:nth-child(1){background:#F1A6A1;}
+  .frame .bar i:nth-child(2){background:#F2CE89;}
+  .frame .bar i:nth-child(3){background:#A8C9A1;}
+  .frame .bar .url{margin-left:.6rem;font-size:11px;color:#8a8171;background:#fff;border:1px solid var(--line);padding:.25rem .6rem;border-radius:999px;}
+  .demo h3{font-family:'Fraunces',serif;letter-spacing:-0.02em;}
+  .field{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1rem 1.05rem;width:100%;font:inherit;color:var(--ink);transition:border .2s,box-shadow .2s;}
+  .field:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 4px rgba(17,16,20,.06);}
+  .field::placeholder{color:#a89f8e;}
+  .label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.45rem;display:block;}
+  .err{color:#B24B3A;font-size:12px;margin-top:.35rem;display:none;}
+  .field.invalid{border-color:#D98674;box-shadow:0 0 0 4px rgba(217,134,116,.15);}
+  .field.invalid + .err{display:block;}
+  .diag{background:repeating-linear-gradient(135deg,rgba(17,16,20,.04) 0 1px,transparent 1px 12px);}
+  .nav-blur{backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);background:rgba(247,242,234,.72);}
+  a.ul{position:relative;}
+  a.ul::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s ease;}
+  a.ul:hover::after{transform:scaleX(1);}
+  .sec-num{font-family:'Instrument Serif',serif;font-style:italic;color:var(--muted);}
+  .wordmark{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.045em;line-height:.85;}
+  .stroke-text{-webkit-text-stroke:1px var(--ink);color:transparent;}
+  .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;}
+  @media (max-width:900px){.bento{grid-template-columns:repeat(2,1fr);}}
+  .cell{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.5rem;box-shadow:0 20px 40px -28px rgba(17,16,20,.2);height:100%;display:flex;flex-direction:column;}
+  .tilt{transition:transform .5s cubic-bezier(.2,.8,.2,1);}
+  .tilt:hover{transform:translateY(-6px) rotate(-.3deg);}
+  /* Project portfolio cards */
+  .proj{cursor:pointer;}
+  .proj .pframe{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 20px 40px -28px rgba(17,16,20,.18),0 1px 0 rgba(17,16,20,.04);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s ease;}
+  .proj:hover .pframe{transform:translateY(-6px);box-shadow:0 40px 70px -30px rgba(17,16,20,.28),0 1px 0 rgba(17,16,20,.04);}
+  .proj .pbar{display:flex;align-items:center;gap:.35rem;padding:.5rem .65rem;background:#F3ECDD;border-bottom:1px solid var(--line);}
+  .proj .pbar i{width:7px;height:7px;border-radius:999px;display:inline-block;}
+  .proj .pbar i:nth-child(1){background:#F1A6A1;}
+  .proj .pbar i:nth-child(2){background:#F2CE89;}
+  .proj .pbar i:nth-child(3){background:#A8C9A1;}
+  .proj .pbar .purl{margin-left:.4rem;font-size:9px;color:#8a8171;background:#fff;border:1px solid var(--line);padding:.18rem .5rem;border-radius:999px;}
+  .proj .pmini{height:230px;position:relative;overflow:hidden;}
+  .proj .pmini h4{font-family:'Fraunces',serif;letter-spacing:-0.02em;line-height:.95;}
+  .proj .arrow{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;border:1px solid var(--line);background:#fff;transition:background .3s,transform .3s;font-size:14px;}
+  .proj:hover .arrow{background:var(--ink);color:var(--cream);transform:rotate(-45deg);}
+</style>
+</head>
+<body class="grain">
+
+<header class="fixed top-0 inset-x-0 z-50 nav-blur border-b hairline">
+  <div class="max-w-[1360px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5">
+      <svg width="28" height="28" viewBox="0 0 40 40" fill="none"><rect x="2" y="2" width="36" height="36" rx="10" fill="#111014"/><path d="M12 28V12h8a5 5 0 0 1 0 10h-4" stroke="#F7F2EA" stroke-width="2.2" stroke-linecap="round"/><circle cx="28" cy="28" r="2" fill="#FF8A5B"/></svg>
+      <span class="font-display text-[19px] tracking-tight">Paragon Grid <span class="font-serif-it text-[var(--muted)]">studio</span></span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-9 text-[14px] text-[var(--ink-2)]">
+      <a href="#work" class="ul">Work</a>
+      <a href="#services" class="ul">Services</a>
+      <a href="#process" class="ul">Process</a>
+      <a href="#pricing" class="ul">Pricing</a>
+      <a href="#faq" class="ul">FAQ</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="#contact" class="hidden sm:inline-flex btn-ghost text-[14px]" style="padding:.55rem 1rem">Houston, TX ◦ Booking</a>
+      <a href="#contact" class="btn-primary text-[14px]" style="padding:.6rem 1rem">Start a project →</a>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="pt-16">
+
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 mesh"></div>
+  <div class="absolute inset-0 diag opacity-60"></div>
+  <div class="relative max-w-[1360px] mx-auto px-6 lg:px-10 pt-16 lg:pt-24 pb-24 lg:pb-32">
+    <div class="flex items-center justify-between flex-wrap gap-4 reveal">
+      <span class="chip"><span class="dot"></span> Now booking — Spring 2026 · Houston &amp; Texas</span>
+      <span class="chip">Est. 2026 · Studio №001</span>
+    </div>
+
+    <h1 class="reveal font-display mt-10 text-[clamp(48px,9vw,148px)] leading-[0.88] tracking-[-0.035em]">
+      Websites that match<br>
+      the <span class="font-serif-it">reputation</span> you've<br>
+      already <span class="italic underline decoration-[3px] decoration-[var(--peach)] underline-offset-[10px]">earned.</span>
+    </h1>
+
+    <div class="mt-10 grid lg:grid-cols-12 gap-8 items-end">
+      <p class="reveal lg:col-span-5 text-[18px] lg:text-[20px] leading-[1.55] text-[var(--ink-2)] max-w-[46ch]">
+        Paragon Grid Studio designs beautiful, trust-first websites for local businesses with five-star reviews and four-star web presence. We turn proven reputation into elegant, high-converting sites that actually generate calls.
+      </p>
+      <div class="reveal lg:col-span-4 flex flex-wrap gap-3">
+        <a href="#contact" class="btn-primary">Book a discovery call →</a>
+        <a href="#work" class="btn-ghost">See our work</a>
+      </div>
+      <div class="reveal lg:col-span-3 text-right">
+        <div class="font-display text-[44px] leading-none">4.9<span class="text-[var(--peach)]">★</span></div>
+        <div class="text-[12px] uppercase tracking-[.12em] muted mt-1">Avg. client Google rating<br>we help protect &amp; promote</div>
+      </div>
+    </div>
+
+    <div class="reveal mt-16 lg:mt-20 relative">
+      <div class="grid grid-cols-12 gap-4 lg:gap-6 items-end">
+        <div class="col-span-6 lg:col-span-3 tilt">
+          <div class="frame">
+            <div class="bar"><i></i><i></i><i></i><span class="url">rosegoldmedspa.com</span></div>
+            <div class="demo p-4" style="background:linear-gradient(180deg,#FFF5EE,#FBE4D6);height:180px;">
+              <div class="text-[10px] uppercase tracking-widest" style="color:#8a5a4a">Rose &amp; Gold · Med Spa</div>
+              <h3 class="text-[18px] leading-tight mt-1" style="color:#3b1f17">Glow, restored.</h3>
+              <div class="mt-3 flex gap-1"><span class="text-[9px] px-2 py-0.5 rounded-full" style="background:#fff;color:#8a5a4a">Botox</span><span class="text-[9px] px-2 py-0.5 rounded-full" style="background:#fff;color:#8a5a4a">Facials</span></div>
+              <div class="mt-3 h-14 rounded-md" style="background:radial-gradient(circle at 30% 30%,#fff,#f3c8b0)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-12 lg:col-span-6 tilt">
+          <div class="frame">
+            <div class="bar"><i></i><i></i><i></i><span class="url">ironhandroofing.com</span></div>
+            <div class="demo" style="background:#0E1520;color:#F5EEDD;">
+              <div class="p-6 lg:p-8 grid lg:grid-cols-5 gap-6 items-center" style="min-height:260px;">
+                <div class="lg:col-span-3">
+                  <div class="text-[10px] uppercase tracking-[.18em]" style="color:#C9A25A">Iron Hand Roofing · Houston</div>
+                  <h3 class="text-[26px] lg:text-[34px] leading-[0.95] mt-2">Built to weather <span class="italic" style="color:#E9C37A">every</span> Texas storm.</h3>
+                  <div class="flex gap-2 mt-4">
+                    <span class="text-[11px] px-3 py-1.5 rounded-full" style="background:#C9A25A;color:#0E1520">Free inspection</span>
+                    <span class="text-[11px] px-3 py-1.5 rounded-full border" style="border-color:#C9A25A66;color:#E9C37A">(832) 555-0199</span>
+                  </div>
+                  <div class="flex gap-4 mt-5 text-[11px]" style="color:#b9aa87">
+                    <div>★ 4.9 · 412 reviews</div><div>Licensed &amp; insured</div><div>24/7 emergency</div>
+                  </div>
+                </div>
+                <div class="lg:col-span-2 hidden lg:block">
+                  <div class="rounded-xl h-[180px]" style="background:radial-gradient(circle at 70% 30%,#C9A25A55,transparent 60%),linear-gradient(160deg,#1a2536,#0b111b);border:1px solid #C9A25A33;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-6 lg:col-span-3 tilt">
+          <div class="frame">
+            <div class="bar"><i></i><i></i><i></i><span class="url">apexdetail.co</span></div>
+            <div class="demo p-4" style="background:linear-gradient(180deg,#0f1115,#1a1d24);color:#F7F2EA;height:180px;">
+              <div class="text-[10px] uppercase tracking-widest" style="color:#A9C4D9">Apex · Auto Detail</div>
+              <h3 class="text-[18px] leading-tight mt-1">Showroom finish.</h3>
+              <div class="mt-3 h-16 rounded-md" style="background:linear-gradient(120deg,#2a3140,#A9C4D9 70%,#fff)"></div>
+              <div class="mt-2 text-[10px]" style="color:#9aa3b2">Ceramic · PPF · Tint</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden lg:flex absolute -top-6 left-1/2 -translate-x-1/2 chip shadow-soft bg-white">★★★★★ &nbsp;Reviews → Calls → Revenue</div>
+    </div>
+  </div>
+
+  <div class="border-y hairline py-5 bg-cream2 overflow-hidden">
+    <div class="ticker whitespace-nowrap font-display text-[22px] lg:text-[28px] tracking-tight">
+      <div class="flex gap-12 shrink-0 items-center">
+        <span>Roofing</span><span>◦</span><span class="font-serif-it">Med Spa</span><span>◦</span><span>HVAC</span><span>◦</span><span class="font-serif-it">Salons</span><span>◦</span><span>Auto Detail</span><span>◦</span><span class="font-serif-it">Plumbing</span><span>◦</span><span>Law Firms</span><span>◦</span><span class="font-serif-it">Dentists</span><span>◦</span><span>Contractors</span><span>◦</span>
+      </div>
+      <div class="flex gap-12 shrink-0 items-center" aria-hidden="true">
+        <span>Roofing</span><span>◦</span><span class="font-serif-it">Med Spa</span><span>◦</span><span>HVAC</span><span>◦</span><span class="font-serif-it">Salons</span><span>◦</span><span>Auto Detail</span><span>◦</span><span class="font-serif-it">Plumbing</span><span>◦</span><span>Law Firms</span><span>◦</span><span class="font-serif-it">Dentists</span><span>◦</span><span>Contractors</span><span>◦</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="relative py-24 lg:py-36">
+  <div class="max-w-[1360px] mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-4">
+      <div class="sec-num text-[14px]">№ 01 — The problem</div>
+      <h2 class="font-display text-[40px] lg:text-[56px] leading-[0.95] mt-4">You earned the trust.<br>Your website didn't.</h2>
+    </div>
+    <div class="lg:col-span-7 lg:col-start-6 text-[18px] leading-[1.65] text-[var(--ink-2)]">
+      <p>The best local businesses in Houston already have the hard part figured out. Hundreds of five-star reviews. A phone that rings on referral alone. Customers who swear by you.</p>
+      <p class="mt-5">Then a stranger Googles you, lands on a tired template from 2014, and the trust evaporates in four seconds. That gap — between the reputation you've earned and the website representing it — is the most expensive thing most businesses never fix.</p>
+      <p class="mt-5 font-display text-[26px] italic text-[var(--ink)]">We fix it. Beautifully.</p>
+    </div>
+  </div>
+</section>
+
+<section class="overflow-hidden border-y hairline bg-cream2 py-14">
+  <div class="ticker whitespace-nowrap wordmark text-[clamp(72px,15vw,220px)]">
+    <div class="flex gap-10 shrink-0 items-center pr-10">
+      <span>Reputation</span>
+      <span class="stroke-text">meets</span>
+      <span class="font-serif-it italic">pixels,</span>
+      <span>pixels</span>
+      <span class="stroke-text">become</span>
+      <span class="font-serif-it italic">profit.</span>
+      <span class="text-[var(--peach)]">◦</span>
+    </div>
+    <div class="flex gap-10 shrink-0 items-center pr-10" aria-hidden="true">
+      <span>Reputation</span>
+      <span class="stroke-text">meets</span>
+      <span class="font-serif-it italic">pixels,</span>
+      <span>pixels</span>
+      <span class="stroke-text">become</span>
+      <span class="font-serif-it italic">profit.</span>
+      <span class="text-[var(--peach)]">◦</span>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="relative py-24 lg:py-36">
+  <div class="max-w-[1360px] mx-auto px-6 lg:px-10">
+    <div class="flex items-end justify-between flex-wrap gap-6">
+      <div>
+        <div class="sec-num text-[14px]">№ 02 — Selected work</div>
+        <h2 class="font-display text-[44px] lg:text-[68px] leading-[0.92] mt-3 max-w-[18ch]">A portfolio of<br><span class="font-serif-it">first</span> impressions.</h2>
+      </div>
+      <p class="max-w-[40ch] text-[var(--ink-2)] text-[16px] leading-[1.6]">A look at the kind of websites we build for Houston's best local businesses. Every preview below was designed and coded in-studio. <span class="font-serif-it text-[var(--peach)]">Twelve directions, one standard.</span></p>
+    </div>
+
+    <!-- 12-card portfolio grid -->
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+      <!-- 01 — Iron Hand Roofing -->
+      <article class="proj">
+        <div class="pframe">
+          <div class="pbar"><i></i><i></i><i></i><span class="purl">ironhandroofing.com</span></div>
+          <div class="pmini" style="background:#0E1520;color:#F5EEDD;">
+            <div class="flex items-center justify-between px-4 py-3 text-[9px]" style="border-bottom:1px solid #ffffff10;">
+              <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-sm" style="background:#C9A25A"></div><b style="font-family:Fraunces;font-size:10px">IRON HAND</b></div>
+              <div style="color:#cdbfa2">Services · Reviews · Contact</div>
+              <div class="px-2 py-1 rounded-full" style="background:#C9A25A;color:#0E1520">Free quote</div>
+            </div>
+            <div class="px-5 pt-6 pb-4">
+              <div class="text-[8px] uppercase tracking-[.18em]" style="color:#C9A25A">Houston · Katy · Sugar Land</div>
+              <h4 class="text-[26px] mt-2">Built to weather<br><span class="italic" style="color:#E9C37A">every</span> storm.</h4>
+              <div class="flex items-center gap-2 mt-3">
+                <span class="text-[9px] px-2.5 py-1.5 rounded-full" style="background:#C9A25A;color:#0E1520">Schedule inspection</span>
+                <span class="text-[9px]" style="color:#b9aa87">★ 4.9 · 412 reviews</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h3 class="font-display text-[20px] leading-tight">Iron Hand Roofing</h3>
+            <div class="text-[11px] uppercase tracking-[.14em] muted mt-1">Roofing · Storm restoration</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <!-- 02 — Rose & Gold Med Spa -->
+      <article class="proj">
+        <div class="pframe">
+          <div class="pbar"><i></i><i></i><i></i><span class="purl">rosegoldmedspa.com</span></div>
+          <div class="pmini" style="background:linear-gradient(180deg,#FFF5EE 0%,#F6D9C6 100%);color:#3b1f17;">
+            <div class="flex items-center justify-between px-4 py-3 text-[9px]" style="border-bottom:1px solid #00000010;">
+              <b style="font-family:Fraunces;letter-spacing:.04em;font-size:10px">ROSE &amp; GOLD</b>
+              <div style="color:#8a5a4a">Treatments · Team · Book</div>
+              <div class="px-2 py-1 rounded-full" style="background:#3b1f17;color:#FFF5EE">Book now</div>
+            </div>
+            <div class="px-5 pt-6 pb-3">
+              <div class="text-[8px] uppercase tracking-[.2em]" style="color:#8a5a4a">Houston Heights · Est. 2019</div>
+              <h4 class="text-[28px] mt-2 italic">Glow, <span class="not-italic">restored.</span></h4>
+              <p class="text-[9px] mt-2 max-w-[26ch]" style="color:#7a4a3a">Medical-grade facials, injectables, and laser, in a space that feels like a retreat.</p>
+            </div>
+            <div class="grid grid-cols-3 gap-1.5 px-4 pb-3">
+              <div class="rounded h-7" style="background:radial-gradient(circle at 30% 30%,#fff,#f3c8b0)"></div>
+              <div class="rounded h-7" style="background:radial-gradient(circle at 60% 40%,#fff,#e8b59a)"></div>
+              <div class="rounded h-7" style="background:radial-gradient(circle at 50% 60%,#fff,#f1a98c)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h3 class="font-display text-[20px] leading-tight">Rose &amp; Gold Med Spa</h3>
+            <div class="text-[11px] uppercase tracking-[.14em] muted mt-1">Med spa · Beauty</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <!-- 03 — Apex Detail -->
+      <article class="proj">
+        <div class="pframe">
+          <div class="pbar"><i></i><i></i><i></i><span class="purl">apexdetail.co</span></div>
+          <div class="pmini" style="background:#0f1115;color:#F7F2EA;">
+            <div class="flex items-center justify-between px-4 py-3 text-[9px]" style="border-bottom:1px solid #ffffff0c;">
+              <b style="font-family:Fraunces;font-size:10px">APEX<span style="color:#A9C4D9">/</span>DETAIL</b>
+              <div style="color:#9aa3b2">Ceramic · PPF · Gallery</div>
+              <div class="px-2 py-1 rounded-full" style="background:#A9C4D9;color:#0f1115">Get quote</div>
+            </div>
+            <div class="px-5 pt-6 pb-3">
+              <div class="text-[8px] uppercase tracking-[.2em]" style="color:#A9C4D9">Houston · Sugar Land · Woodlands</div>
+              <h4 class="text-[26px] mt-2">Showroom finish.<br><span class="italic" style="color:#A9C4D9">Driveway delivery.</span></h4>
+            </div>
+            <div class="px-4 pb-3">
+              <div class="rounded h-12" style="background:linear-gradient(120deg,#1a1d24 0%,#2a3140 40%,#A9C4D9 80%,#fff 100%);border:1px solid #ffffff10;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h3 class="font-display text-[20px] leading-tight">Apex Detail</h3>
+            <div class="text-[11px] uppercase tracking-[.14em] muted mt-1">Auto detail · Tint · PPF</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <!-- 04 — Halstead & Co. -->
+      <article class="proj">
+        <div class="pframe">
+          <div class="pbar"><i></i><i></i><i></i><span class="purl">halsteadlawhouston.com</span></div>
+          <div class="pmini" style="background:#F3EEE4;color:#1B1A17;">
+            <div class="flex items-center justify-between px-4 py-3 text-[9px]" style="border-bottom:1px solid #00000012;">
+              <div style="font-family:Fraunces;letter-spacing:.06em;font-size:10px"><b>HALSTEAD</b> <span style="color:#5B3A57">&amp; CO.</span></div>
+              <div style="color:#5B3A57">Practice Areas · Results · Contact</div>
+              <div class="px-2 py-1 rounded-full border" style="border-color:#5B3A57;color:#5B3A57">Free consult</div>
+            </div>
+            <div class="px-5 pt-6 pb-3">
+              <div class="text-[8px] uppercase tracking-[.2em]" style="color:#5B3A57">Houston · Texas · Since 1998</div>
+              <h4 class="text-[26px] mt-2">Quiet confidence.<br><span class="italic" style="color:#5B3A57">Loud results.</span></h4>
+              <div class="flex gap-1.5 mt-3 text-[8px]">
+                <span class="px-2 py-1 rounded-full border" style="border-color:#00000022">Super Lawyers</span>
+                <span class="px-2 py-1 rounded-full border" style="border-color:#00000022">Avvo 10.0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h3 class="font-display text-[20px] leading-tight">Halstead &amp; Co.</h3>
+            <div class="text-[11px] uppercase tracking-[.14em] muted mt-1">Legal · Personal injury</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <!-- 05 — Maison Olivera -->
+      <article class="proj">
+        <div class="pframe">
+          <div class="pbar"><i></i><i></i><i></i><span class="purl">maisonolivera.com</span></div>
+          <div class="pmini" style="background:linear-gradient(180deg,#F9F4E8 0%,#EDE0C4 100%);color:#2A2315;">
+            <div class="flex items-center justify-between px-4 py-3 text-[9px]" style="border-bottom:1px solid #00000012;">
+              <div style="font-family:Fraunces;letter-spacing:.08em;font-size:10px">MAISON <span class="font-serif-it" style="color:#7A8A6F">olivera</span></div>
+              <div style="color:#5a5240">The Table · Story</div>
+              <div class="px-2 py-1 rounded-full" style="background:#2A2315;color:#F9F4E8">Reserve</div>
+            </div>
+            <div class="px-5 pt-6 pb-3">
+              <div class="text-[8px] uppercase tracking-[.22em]" style="color:#7A8A6F">Montrose · Houston</div>
+              <h4 class="text-[28px] mt-2 leading-[0.9]">A seat at the<br><span class="font-serif-it italic" style="color:#7A8A6F">finest</span> table.</h4>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h3 class="font-display text-[20px] leading-tight">Maison Olivera</h3>
+            <div class="text-[11px] uppercase tracking-[.14em] muted mt-1">Restaurant · Hospitality</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <!-- 06 — Cooltide HVAC -->
+      <article class="proj">
+        <div class="pframe">
+          <div class="pbar"><i></i><i></i><i></i><span class="purl">cooltidehvac.com</span></div>
+          <div class="pmini" style="background:linear-gradient(180deg,#0B1A26 0%,#15303F 100%);color:#EAF2F7;">
+            <div class="flex items-center justify-between px-4 py-3 text-[9px]" style="border-bottom:1px solid #ffffff10;">
+              <b style="font-family:Fraunces;font-size:10px">COOLTIDE <span style="color:#FF9A3C">HVAC</span></b>
+              <div style="color:#9eb4c2">Cooling · Heating · Service</div>
+              <div class="px-2 py-1 rounded-full" style="background:#FF9A3C;color:#0B1A26">24/7 line</div>
+            </div>
+            <div class="px-5 pt-6 pb-3">
+              <div class="text-[8px] uppercase tracking-[.2em]" style="color:#FF9A3C">Houston · Pearland · Pasadena</div>
+              <h4 class="text-[26px] mt-2">Texas heat,<br><span class="italic" style="color:#FFB36B">beat.</span></h4>
+              <div class="flex items-center gap-2 mt-3">
+                <span class="text-[9px] px-2.5 py-1.5 rounded-full" style="background:#FF9A3C;color:#0B1A26">Same-day service</span>
+                <span class="text-[9px]" style="color:#9eb4c2">★ 4.8 · 318</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h3 class="font-display text-[20px] leading-tight">Cooltide HVAC</h3>
+            <div class="text-[11px] uppercase tracking-[.14em] muted mt-1">HVAC · Air conditioning</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <!-- 07 — Bayou Dental Studio -->
+      <article class="proj">
+        <div class="pframe">
+          <div class="pbar"><i></i><i></i><i></i><span class="purl">bayoudentalstudio.com</span></div>
+          <div class="pmini" style="background:linear-gradient(180deg,#F5FBF9 0%,#DBEEE6 100%);color:#0E2A24;">
+            <div class="flex items-center justify-between px-4 py-3 text-[9px]" style="border-bottom:1px solid #00000010;">
+              <b style="font-family:Fraunces;font-size:10px">BAYOU <span style="color:#2E7C6A">dental</span></b>
+              <div style="color:#4a6b62">Care · Team · Patients</div>
+              <div class="px-2 py-1 rounded-full" style="background:#0E2A24;color:#F5FBF9">Book visit</div>
+            </div>
+            <div class="px-5 pt-6 pb-3">
+              <div class="text-[8px] uppercase tracking-[.2em]" style="color:#2E7C6A">River Oaks · Houston</div>
+              <h4 class="text-[28px] mt-2 italic">Smile, <span class="not-italic">refined.</span></h4>
+              <p class="text-[9px] mt-2 max-w-[28ch]" style="color:#4a6b62">Modern, gentle dentistry from a team that knows you by name.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h3 class="font-display text-[20px] leading-tight">Bayou Dental Studio</h3>
+            <div class="text-[11px] uppercase tracking-[.14em] muted mt-1">Dentistry · Health</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <!-- 08 — Brassfield Plumbing -->
+      <article class="proj">
+        <div class="pframe">
+          <div class="pbar"><i></i><i></i><i></i><span class="purl">brassfieldplumbing.com</span></div>
+          <div class="pmini" style="background:linear-gradient(180deg,#1B1410 0%,#2A1E16 100%);color:#F7E9D7;">
+            <div class="flex items-center justify-between px-4 py-3 text-[9px]" style="border-bottom:1px solid #ffffff10;">
+              <b style="font-family:Fraunces;font-size:10px">BRASSFIELD <span style="color:#D69356">plumbing</span></b>
+              <div style="color:#bca996">Services · Reviews · Call</div>
+              <div class="px-2 py-1 rounded-full" style="background:#D69356;color:#1B1410">Get a quote</div>
+            </div>
+            <div class="px-5 pt-6 pb-3">
+              <div class="text-[8px] uppercase tracking-[.2em]" style="color:#D69356">Family-owned · Houston · 1996</div>
+              <h4 class="text-[26px] mt-2">Done right,<br><span class="italic" style="color:#E6B27D">done once.</span></h4>
+              <div class="flex items-center gap-2 mt-3">
+                <span class="text-[9px] px-2.5 py-1.5 rounded-full" style="background:#D69356;color:#1B1410">Emergency line</span>
+                <span class="text-[9px]" style="color:#bca996">★ 4.9 · 526</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h3 class="font-display text-[20px] leading-tight">Brassfield Plumbing</h3>
+            <div class="text-[11px] uppercase tracking-[.14em] muted mt-1">Plumbing · Home services</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <!-- 09 — Heights Realty Co. -->
+      <article class="proj">
+        <div class="pframe">
+          <div class="pbar"><i></i><i></i><i></i><span class="purl">heightsrealtyco.com</span></div>
+          <div class="pmini" style="background:#FBF8F1;color:#1A1814;">
+            <div class="flex items-center justify-between px-4 py-3 text-[9px]" style="border-bottom:1px solid #00000010;">
+              <div style="font-family:Fraunces;letter-spacing:.08em;font-size:10px">HEIGHTS<span style="color:#B8862F"> · </span>REALTY<span style="color:#B8862F"> CO.</span></div>
+              <div style="color:#6b6357">Listings · Sell · Story</div>
+              <div class="px-2 py-1 rounded-full border" style="border-color:#B8862F;color:#B8862F">Get an estimate</div>
+            </div>
+            <div class="px-5 pt-6 pb-3">
+              <div class="text-[8px] uppercase tracking-[.2em]" style="color:#B8862F">Houston Heights · Montrose · Bellaire</div>
+              <h4 class="text-[26px] mt-2">Houston,<br><span class="font-serif-it italic" style="color:#B8862F">home found.</span></h4>
+            </div>
+            <div class="px-4 pb-3 grid grid-cols-3 gap-1.5">
+              <div class="h-8 rounded" style="background:linear-gradient(135deg,#E8DCC0,#B8862F)"></div>
+              <div class="h-8 rounded" style="background:linear-gradient(135deg,#D4C49E,#8a6a26)"></div>
+              <div class="h-8 rounded" style="background:linear-gradient(135deg,#F0E5C7,#C9A25A)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h3 class="font-display text-[20px] leading-tight">Heights Realty Co.</h3>
+            <div class="text-[11px] uppercase tracking-[.14em] muted mt-1">Real estate · Boutique</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <!-- 10 — The Loft Hair Studio -->
+      <article class="proj">
+        <div class="pframe">
+          <div class="pbar"><i></i><i></i><i></i><span class="purl">thelofthouston.com</span></div>
+          <div class="pmini" style="background:linear-gradient(180deg,#F8E6E6 0%,#E9C2C2 100%);color:#2B0F14;">
+            <div class="flex items-center justify-between px-4 py-3 text-[9px]" style="border-bottom:1px solid #00000010;">
+              <b style="font-family:Fraunces;letter-spacing:.06em;font-size:10px">THE LOFT</b>
+              <div style="color:#7c3a45">Stylists · Services · Book</div>
+              <div class="px-2 py-1 rounded-full" style="background:#2B0F14;color:#F8E6E6">Reserve chair</div>
+            </div>
+            <div class="px-5 pt-6 pb-3">
+              <div class="text-[8px] uppercase tracking-[.22em]" style="color:#7c3a45">Rice Village · Houston</div>
+              <h4 class="text-[28px] mt-2">Your chair,<br><span class="font-serif-it italic" style="color:#7c3a45">reserved.</span></h4>
+            </div>
+            <div class="px-4 pb-3 flex gap-1.5 text-[8px]">
+              <span class="px-2 py-1 rounded-full bg-white">Color</span>
+              <span class="px-2 py-1 rounded-full bg-white">Cut</span>
+              <span class="px-2 py-1 rounded-full bg-white">Extensions</span>
+              <span class="px-2 py-1 rounded-full bg-white">Bridal</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h3 class="font-display text-[20px] leading-tight">The Loft Hair Studio</h3>
+            <div class="text-[11px] uppercase tracking-[.14em] muted mt-1">Hair salon · Beauty</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <!-- 11 — Lonestar Strength Co. -->
+      <article class="proj">
+        <div class="pframe">
+          <div class="pbar"><i></i><i></i><i></i><span class="purl">lonestarstrength.co</span></div>
+          <div class="pmini" style="background:#0a0a0c;color:#F7F2EA;">
+            <div class="flex items-center justify-between px-4 py-3 text-[9px]" style="border-bottom:1px solid #ffffff10;">
+              <b style="font-family:Fraunces;font-size:10px">LONESTAR <span style="color:#FF5A1F">/</span> STRENGTH</b>
+              <div style="color:#9a958c">Programs · Coaches · Trial</div>
+              <div class="px-2 py-1 rounded-full" style="background:#FF5A1F;color:#0a0a0c">Free week</div>
+            </div>
+            <div class="px-5 pt-6 pb-3">
+              <div class="text-[8px] uppercase tracking-[.22em]" style="color:#FF5A1F">East End · Houston</div>
+              <h4 class="text-[26px] mt-2">Stronger<br><span class="italic" style="color:#FF8A5B">every set.</span></h4>
+              <div class="flex items-center gap-2 mt-3">
+                <span class="text-[9px] px-2.5 py-1.5 rounded-full" style="background:#FF5A1F;color:#0a0a0c">Start free week</span>
+                <span class="text-[9px]" style="color:#9a958c">2400 sq ft</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h3 class="font-display text-[20px] leading-tight">Lonestar Strength Co.</h3>
+            <div class="text-[11px] uppercase tracking-[.14em] muted mt-1">Fitness · Strength gym</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+      <!-- 12 — Field & Folly Coffee -->
+      <article class="proj">
+        <div class="pframe">
+          <div class="pbar"><i></i><i></i><i></i><span class="purl">fieldandfolly.coffee</span></div>
+          <div class="pmini" style="background:linear-gradient(180deg,#F5F1E4 0%,#E2DDC8 100%);color:#1F2A1B;">
+            <div class="flex items-center justify-between px-4 py-3 text-[9px]" style="border-bottom:1px solid #00000010;">
+              <b style="font-family:Fraunces;letter-spacing:.04em;font-size:10px">FIELD <span class="font-serif-it" style="color:#4F6B3F">&amp; folly</span></b>
+              <div style="color:#4F6B3F">Menu · Beans · Visit</div>
+              <div class="px-2 py-1 rounded-full" style="background:#1F2A1B;color:#F5F1E4">Order ahead</div>
+            </div>
+            <div class="px-5 pt-6 pb-3">
+              <div class="text-[8px] uppercase tracking-[.22em]" style="color:#4F6B3F">Garden Oaks · Houston</div>
+              <h4 class="text-[28px] mt-2">Slow mornings,<br><span class="font-serif-it italic" style="color:#4F6B3F">served.</span></h4>
+              <div class="flex gap-1.5 mt-3 text-[8px]">
+                <span class="px-2 py-1 rounded-full bg-white">Espresso</span>
+                <span class="px-2 py-1 rounded-full bg-white">Pastry</span>
+                <span class="px-2 py-1 rounded-full bg-white">Beans</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h3 class="font-display text-[20px] leading-tight">Field &amp; Folly Coffee</h3>
+            <div class="text-[11px] uppercase tracking-[.14em] muted mt-1">Café · Specialty coffee</div>
+          </div>
+          <div class="arrow">↗</div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="mt-16 flex flex-wrap items-center justify-between gap-4 border-t hairline pt-8">
+      <p class="muted text-[14px] max-w-[56ch]">Twelve directions, one standard. Your industry not listed? We've also built for florists, chiropractors, photographers, and boutique fitness — the playbook works anywhere reputation matters.</p>
+      <a href="#contact" class="btn-ghost">Talk about your industry →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="relative py-24 lg:py-36 border-t hairline bg-cream2">
+  <div class="max-w-[1360px] mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-10 items-end">
+      <div class="lg:col-span-6">
+        <div class="sec-num text-[14px]">№ 03 — What we build</div>
+        <h2 class="font-display text-[44px] lg:text-[68px] leading-[0.92] mt-3">Everything your<br>website needs to<br>feel <span class="font-serif-it italic">earned.</span></h2>
+      </div>
+      <div class="lg:col-span-5 lg:col-start-8 text-[16px] leading-[1.65] text-[var(--ink-2)]">
+        Three flagship builds, three care plans, zero confusion. Pick the tier that fits where your business is today — we'll tell you honestly if you're looking at the wrong one.
+      </div>
+    </div>
+
+    <!-- BUILD PACKAGES (4) -->
+    <div class="bento mt-16">
+      <div class="cell col-span-6 lg:col-span-3 tilt">
+        <div class="flex items-center justify-between">
+          <div class="text-[11px] uppercase tracking-[.14em] muted">Entry · 01</div>
+          <span class="text-[10px] uppercase tracking-[.12em] muted">Launch page</span>
+        </div>
+        <h3 class="font-display text-[28px] mt-2 italic">Launch Page</h3>
+        <div class="font-display text-[40px] mt-4">$800</div>
+        <p class="mt-2 font-serif-it text-[14px] text-[var(--peach)]">A first foothold online.</p>
+        <ul class="mt-5 space-y-2 text-[13px] text-[var(--ink-2)]">
+          <li>◦ Single-page site</li>
+          <li>◦ Mobile-friendly design</li>
+          <li>◦ Click-to-call button</li>
+          <li>◦ Basic launch support</li>
+          <li>◦ Delivered in ~5 days</li>
+        </ul>
+      </div>
+
+      <div class="cell col-span-6 lg:col-span-3 tilt">
+        <div class="flex items-center justify-between">
+          <div class="text-[11px] uppercase tracking-[.14em] muted">Solo &amp; new · 02</div>
+          <span class="text-[10px] uppercase tracking-[.12em] muted">Starter</span>
+        </div>
+        <h3 class="font-display text-[28px] mt-2 italic">Starter Presence</h3>
+        <div class="font-display text-[40px] mt-4">$1,250</div>
+        <p class="mt-2 font-serif-it text-[14px] text-[var(--peach)]">Stop looking invisible.</p>
+        <ul class="mt-5 space-y-2 text-[13px] text-[var(--ink-2)]">
+          <li>◦ Up to 3 pages</li>
+          <li>◦ Contact form &amp; map</li>
+          <li>◦ Google review section</li>
+          <li>◦ Basic local SEO setup</li>
+          <li>◦ Copy cleanup</li>
+        </ul>
+      </div>
+
+      <div class="cell col-span-12 lg:col-span-3 tilt relative" style="background:#111014;color:#F7F2EA;border-color:#111014;">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 chip" style="background:#FF8A5B;color:#111;border-color:#FF8A5B">Recommended</span>
+        <div class="flex items-center justify-between">
+          <div class="text-[11px] uppercase tracking-[.14em]" style="color:#C9A25A">Most popular · 03</div>
+          <span class="text-[10px] uppercase tracking-[.12em]" style="color:#8a7f66">Flagship</span>
+        </div>
+        <h3 class="font-display text-[28px] mt-2 italic">Core Local Site</h3>
+        <div class="font-display text-[40px] mt-4">$2,500</div>
+        <p class="mt-2 font-serif-it text-[14px]" style="color:#E9C37A">The Paragon flagship.</p>
+        <ul class="mt-5 space-y-2 text-[13px]" style="color:#c8c0af">
+          <li>◦ 5 custom-branded pages</li>
+          <li>◦ Lead form + click-to-text</li>
+          <li>◦ Review highlights &amp; maps</li>
+          <li>◦ Stronger local SEO</li>
+          <li>◦ One revision round</li>
+          <li>◦ Launch support included</li>
+        </ul>
+      </div>
+
+      <div class="cell col-span-12 lg:col-span-3 tilt">
+        <div class="flex items-center justify-between">
+          <div class="text-[11px] uppercase tracking-[.14em] muted">Growth mode · 04</div>
+          <span class="text-[10px] uppercase tracking-[.12em] muted">Lead gen</span>
+        </div>
+        <h3 class="font-display text-[28px] mt-2 italic">Lead Gen Growth</h3>
+        <div class="font-display text-[40px] mt-4">$4,500</div>
+        <p class="mt-2 font-serif-it text-[14px] text-[var(--peach)]">Built to generate leads.</p>
+        <ul class="mt-5 space-y-2 text-[13px] text-[var(--ink-2)]">
+          <li>◦ 7–10 pages</li>
+          <li>◦ Multi-service &amp; area pages</li>
+          <li>◦ Booking / quote flow</li>
+          <li>◦ CRM or email integration</li>
+          <li>◦ Analytics setup</li>
+          <li>◦ Two revision rounds</li>
+        </ul>
+      </div>
+
+      <!-- CARE PLANS (4) -->
+      <div class="cell col-span-12 tilt">
+        <div class="flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <div class="text-[11px] uppercase tracking-[.14em] muted">Care plans</div>
+            <h3 class="font-display text-[32px] mt-2">Your site, always looking sharp.</h3>
+            <p class="text-[14px] muted mt-1 max-w-[52ch]">Pick the level of attention your business needs after launch. Cancel any time — we earn the renewal every month.</p>
+          </div>
+          <div class="flex gap-2 text-[11px] flex-wrap">
+            <span class="chip">Hosting</span><span class="chip">Security</span><span class="chip">Updates</span><span class="chip">Edits</span><span class="chip">SEO</span>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+          <div class="rounded-xl p-5 hairline border">
+            <div class="text-[10px] uppercase tracking-[.14em] muted">Domain Watch</div>
+            <div class="font-display text-[34px] mt-2">$20<span class="text-[13px] muted font-sans">/month</span></div>
+            <p class="font-serif-it text-[13px] text-[var(--peach)] mt-1">The bare minimum, kept simple.</p>
+            <ul class="mt-4 space-y-1.5 text-[12px] text-[var(--ink-2)]">
+              <li>◦ Domain management</li>
+              <li>◦ Uptime monitoring</li>
+              <li>◦ Renewal &amp; expiry alerts</li>
+              <li>◦ No content edits</li>
+            </ul>
+          </div>
+          <div class="rounded-xl p-5 hairline border bg-cream">
+            <div class="text-[10px] uppercase tracking-[.14em] muted">Essential Care</div>
+            <div class="font-display text-[34px] mt-2">$89<span class="text-[13px] muted font-sans">/month</span></div>
+            <p class="font-serif-it text-[13px] text-[var(--peach)] mt-1">For sites that just need to stay sharp.</p>
+            <ul class="mt-4 space-y-1.5 text-[12px] text-[var(--ink-2)]">
+              <li>◦ Uptime + form monitoring</li>
+              <li>◦ Platform &amp; plugin checks</li>
+              <li>◦ Minor text edits</li>
+              <li>◦ 3 small updates / month</li>
+            </ul>
+          </div>
+          <div class="rounded-xl p-5 hairline border relative" style="background:#111014;color:#F7F2EA;border-color:#111014;">
+            <span class="absolute -top-3 left-4 chip" style="background:#C9A25A;color:#111;border-color:#C9A25A">Most chosen</span>
+            <div class="text-[10px] uppercase tracking-[.14em]" style="color:#C9A25A">Active Business Care</div>
+            <div class="font-display text-[34px] mt-2">$199<span class="text-[13px] font-sans" style="color:#8a7f66">/month</span></div>
+            <p class="font-serif-it text-[13px] mt-1" style="color:#E9C37A">For businesses that update often.</p>
+            <ul class="mt-4 space-y-1.5 text-[12px]" style="color:#c8c0af">
+              <li>◦ Everything in Essential</li>
+              <li>◦ Up to 6 small edits / month</li>
+              <li>◦ Photo &amp; review swaps</li>
+              <li>◦ Seasonal banners &amp; promos</li>
+              <li>◦ Priority support</li>
+            </ul>
+          </div>
+          <div class="rounded-xl p-5 hairline border">
+            <div class="text-[10px] uppercase tracking-[.14em] muted">Growth Support</div>
+            <div class="font-display text-[34px] mt-2">$349<span class="text-[13px] muted font-sans">/month</span></div>
+            <p class="font-serif-it text-[13px] text-[var(--peach)] mt-1">For sites built to keep climbing.</p>
+            <ul class="mt-4 space-y-1.5 text-[12px] text-[var(--ink-2)]">
+              <li>◦ Everything in Active</li>
+              <li>◦ Monthly SEO improvements</li>
+              <li>◦ New sections &amp; landing pages</li>
+              <li>◦ Unlimited content changes</li>
+              <li>◦ Lead generation campaigns</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="cell col-span-12 tilt" style="background:linear-gradient(135deg,#FFF0E4,#F3E2B8);">
+        <div class="text-[11px] uppercase tracking-[.14em] muted">Add whenever you're ready</div>
+        <h3 class="font-display text-[32px] mt-2">Extras that pull their weight.</h3>
+        <div class="grid md:grid-cols-2 gap-3 mt-5 text-[14px]">
+          <div class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white grid place-items-center text-[12px]">◦</span> Logo refresh &amp; brand kit</div>
+          <div class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white grid place-items-center text-[12px]">◦</span> Professional photography day</div>
+          <div class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white grid place-items-center text-[12px]">◦</span> Google Business Profile overhaul</div>
+          <div class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white grid place-items-center text-[12px]">◦</span> Review-generation system</div>
+          <div class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white grid place-items-center text-[12px]">◦</span> Google Ads launch kit</div>
+          <div class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-white grid place-items-center text-[12px]">◦</span> Email capture + automations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="relative py-24 lg:py-36">
+  <div class="max-w-[1360px] mx-auto px-6 lg:px-10">
+    <div class="sec-num text-[14px]">№ 04 — How it works</div>
+    <h2 class="font-display text-[44px] lg:text-[68px] leading-[0.92] mt-3 max-w-[16ch]">Four weeks. <span class="font-serif-it italic">One</span> calm process.</h2>
+
+    <div class="mt-16 grid lg:grid-cols-4 gap-6">
+      <div class="border-t hairline pt-6">
+        <div class="flex items-baseline justify-between"><span class="font-display text-[40px]">01</span><span class="text-[11px] uppercase tracking-[.16em] muted">Week 1</span></div>
+        <h3 class="font-display text-[24px] mt-4">Discovery</h3>
+        <p class="text-[14px] mt-2 text-[var(--ink-2)]">A focused call, a short brand questionnaire, and an honest audit of your current presence. We identify the trust gap.</p>
+      </div>
+      <div class="border-t hairline pt-6">
+        <div class="flex items-baseline justify-between"><span class="font-display text-[40px]">02</span><span class="text-[11px] uppercase tracking-[.16em] muted">Week 2</span></div>
+        <h3 class="font-display text-[24px] mt-4">Design</h3>
+        <p class="text-[14px] mt-2 text-[var(--ink-2)]">We design your homepage and key pages in high fidelity. You see real layouts, real copy, real buttons — no lorem ipsum.</p>
+      </div>
+      <div class="border-t hairline pt-6">
+        <div class="flex items-baseline justify-between"><span class="font-display text-[40px]">03</span><span class="text-[11px] uppercase tracking-[.16em] muted">Week 3</span></div>
+        <h3 class="font-display text-[24px] mt-4">Build</h3>
+        <p class="text-[14px] mt-2 text-[var(--ink-2)]">Hand-built, fast, responsive. Reviews embedded, forms wired, SEO foundation laid, analytics in place.</p>
+      </div>
+      <div class="border-t pt-6" style="border-color:var(--peach);">
+        <div class="flex items-baseline justify-between"><span class="font-display text-[40px]" style="color:var(--peach)">04</span><span class="text-[11px] uppercase tracking-[.16em] muted">Week 4</span></div>
+        <h3 class="font-display text-[24px] mt-4">Launch</h3>
+        <p class="text-[14px] mt-2 text-[var(--ink-2)]">Final revisions, go-live, and a 30-minute walkthrough so you know exactly how to use what you own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="relative py-24 lg:py-36 bg-ink text-[var(--cream)] overflow-hidden">
+  <div class="absolute inset-0 opacity-30" style="background:radial-gradient(50% 40% at 20% 20%,#FF8A5B 0%,transparent 60%),radial-gradient(40% 40% at 80% 80%,#C9A25A 0%,transparent 60%);"></div>
+  <div class="relative max-w-[1360px] mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-5">
+      <div class="sec-num text-[14px]" style="color:#C9A25A">№ 05 — Why Paragon Grid</div>
+      <h2 class="font-display text-[44px] lg:text-[68px] leading-[0.92] mt-3">Not another<br>agency. A <span class="font-serif-it italic">studio.</span></h2>
+      <p class="mt-6 text-[18px] leading-[1.6]" style="color:#c8c0af;max-width:40ch;">We only take the projects we can pour ourselves into. That's why every site that leaves here looks like it was built for one business — because it was.</p>
+      <a href="#contact" class="btn-primary mt-8" style="background:#F7F2EA;color:#111">Start a project →</a>
+    </div>
+    <div class="lg:col-span-7 grid sm:grid-cols-2 gap-5">
+      <div class="rounded-2xl p-6 border" style="border-color:#ffffff1c;background:#ffffff08;">
+        <div class="font-display text-[40px]" style="color:#FF8A5B">★★★★★</div>
+        <h4 class="font-display text-[22px] mt-3">Reviews at the center</h4>
+        <p class="text-[13px] mt-2" style="color:#c8c0af">Your Google reviews aren't buried in a footer. They're a design element — front and center, where buyers decide.</p>
+      </div>
+      <div class="rounded-2xl p-6 border" style="border-color:#ffffff1c;background:#ffffff08;">
+        <div class="font-display text-[40px]" style="color:#C9A25A">0.9s</div>
+        <h4 class="font-display text-[22px] mt-3">Actually fast</h4>
+        <p class="text-[13px] mt-2" style="color:#c8c0af">Hand-coded, image-optimized, no bloated page-builder graveyards. Your site loads before they change their mind.</p>
+      </div>
+      <div class="rounded-2xl p-6 border" style="border-color:#ffffff1c;background:#ffffff08;">
+        <div class="font-display text-[40px]">Houston</div>
+        <h4 class="font-display text-[22px] mt-3">Local, actually</h4>
+        <p class="text-[13px] mt-2" style="color:#c8c0af">We know the neighborhoods, the search terms, the seasons. Texas businesses are our specialty — not a side project.</p>
+      </div>
+      <div class="rounded-2xl p-6 border" style="border-color:#ffffff1c;background:#ffffff08;">
+        <div class="font-display text-[40px]">You own it</div>
+        <h4 class="font-display text-[22px] mt-3">No lock-in, ever</h4>
+        <p class="text-[13px] mt-2" style="color:#c8c0af">Your domain, your hosting, your content. Leave us any time — we'll even help you move.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="relative py-24 lg:py-36">
+  <div class="max-w-[1360px] mx-auto px-6 lg:px-10">
+    <div class="flex items-end justify-between flex-wrap gap-4">
+      <div>
+        <div class="sec-num text-[14px]">№ 06 — Kind words</div>
+        <h2 class="font-display text-[44px] lg:text-[68px] leading-[0.92] mt-3">What owners<br><span class="font-serif-it italic">will</span> be saying.</h2>
+      </div>
+      <span class="chip">Demo testimonials — replaced with real clients at launch</span>
+    </div>
+
+    <div class="mt-14 grid lg:grid-cols-3 gap-6">
+      <figure class="cell tilt">
+        <div class="text-[var(--peach)] text-[18px]">★★★★★</div>
+        <blockquote class="font-display text-[24px] leading-[1.25] mt-4">"Our phone started ringing within the first week. The site finally looks like the business people describe in our reviews."</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 text-[13px]">
+          <div class="w-10 h-10 rounded-full" style="background:linear-gradient(135deg,#FF8A5B,#C9A25A)"></div>
+          <div>
+            <div class="font-medium">Marisol Herrera <span class="muted text-[11px]">· demo</span></div>
+            <div class="muted">Owner · Rose &amp; Gold Med Spa</div>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="cell tilt" style="background:#111014;color:#F7F2EA;border-color:#111014;">
+        <div style="color:#C9A25A" class="text-[18px]">★★★★★</div>
+        <blockquote class="font-display text-[24px] leading-[1.25] mt-4">"They treated our roofing company like a luxury brand. Nobody has ever done that before. It shows."</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 text-[13px]">
+          <div class="w-10 h-10 rounded-full" style="background:linear-gradient(135deg,#C9A25A,#FF8A5B)"></div>
+          <div>
+            <div class="font-medium">Dale Whitaker <span style="color:#8a7f66" class="text-[11px]">· demo</span></div>
+            <div style="color:#c8c0af">Founder · Iron Hand Roofing</div>
+          </div>
+        </figcaption>
+      </figure>
+      <figure class="cell tilt">
+        <div class="text-[var(--peach)] text-[18px]">★★★★★</div>
+        <blockquote class="font-display text-[24px] leading-[1.25] mt-4">"Calm, organized, and the result is gorgeous. I actually send people to my website now instead of apologizing for it."</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 text-[13px]">
+          <div class="w-10 h-10 rounded-full" style="background:linear-gradient(135deg,#7A8A6F,#A9C4D9)"></div>
+          <div>
+            <div class="font-medium">Priya Halstead <span class="muted text-[11px]">· demo</span></div>
+            <div class="muted">Partner · Halstead &amp; Co.</div>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING STRIP -->
+<section id="pricing" class="bg-cream2 border-y hairline py-14">
+  <div class="max-w-[1360px] mx-auto px-6 lg:px-10 flex items-center justify-between gap-6 flex-wrap">
+    <div class="font-display text-[32px] lg:text-[44px] leading-tight max-w-[22ch]">Most clients land on <span class="font-serif-it italic">Core Local Business</span> at $2,500.</div>
+    <div class="flex gap-3 flex-wrap"><a href="#contact" class="btn-primary">Book a discovery call →</a><a href="#services" class="btn-ghost">Compare tiers</a></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="relative py-24 lg:py-36">
+  <div class="max-w-[1360px] mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-4">
+      <div class="sec-num text-[14px]">№ 07 — Questions</div>
+      <h2 class="font-display text-[44px] lg:text-[60px] leading-[0.92] mt-3">The ones<br>we hear <span class="font-serif-it italic">first.</span></h2>
+      <p class="mt-6 muted max-w-[32ch]">Don't see yours? Email <a href="#contact" class="underline"><span class="__cf_email__" data-cfemail="6c04090000032c1c0d1e0d0b03020b1e0508421f1819080503">[email&#160;protected]</span></a> and we'll answer straight.</p>
+    </div>
+    <div class="lg:col-span-8 border-t hairline">
+      <details class="group border-b hairline py-6">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-display text-[22px] lg:text-[28px]">How long does a project actually take?</span>
+          <span class="text-[28px] muted group-open:rotate-45 transition">+</span>
+        </summary>
+        <p class="mt-4 text-[16px] text-[var(--ink-2)] max-w-[62ch]">Most builds go live 3–4 weeks after kickoff. Starter Presence can be as fast as 7 days. We move quickly because we only take on a few projects at a time.</p>
+      </details>
+      <details class="group border-b hairline py-6">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-display text-[22px] lg:text-[28px]">Do I have to write the copy?</span>
+          <span class="text-[28px] muted group-open:rotate-45 transition">+</span>
+        </summary>
+        <p class="mt-4 text-[16px] text-[var(--ink-2)] max-w-[62ch]">No. We write the entire site for you based on a 30-minute call and your existing reviews. You review, tweak, approve. That's it.</p>
+      </details>
+      <details class="group border-b hairline py-6">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-display text-[22px] lg:text-[28px]">Will my site actually show up on Google?</span>
+          <span class="text-[28px] muted group-open:rotate-45 transition">+</span>
+        </summary>
+        <p class="mt-4 text-[16px] text-[var(--ink-2)] max-w-[62ch]">Every site ships with a proper local SEO foundation: schema, metadata, service area pages, and a Google Business Profile check. Growth tier clients get ongoing work to keep climbing.</p>
+      </details>
+      <details class="group border-b hairline py-6">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-display text-[22px] lg:text-[28px]">What happens if I want to leave later?</span>
+          <span class="text-[28px] muted group-open:rotate-45 transition">+</span>
+        </summary>
+        <p class="mt-4 text-[16px] text-[var(--ink-2)] max-w-[62ch]">You own everything. Your domain stays in your account, your content is yours, and we'll help you migrate hosting if you ever want to. No games.</p>
+      </details>
+      <details class="group border-b hairline py-6">
+        <summary class="flex items-center justify-between cursor-pointer list-none">
+          <span class="font-display text-[22px] lg:text-[28px]">Do you only work with Houston businesses?</span>
+          <span class="text-[28px] muted group-open:rotate-45 transition">+</span>
+        </summary>
+        <p class="mt-4 text-[16px] text-[var(--ink-2)] max-w-[62ch]">Houston and Texas are our home base and where we do most of our work. We take select projects outside Texas when the fit is right.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="relative py-24 lg:py-36 bg-cream2 border-t hairline overflow-hidden">
+  <div class="absolute inset-0 mesh-2 opacity-80"></div>
+  <div class="relative max-w-[1360px] mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-5">
+      <div class="sec-num text-[14px]">№ 08 — Start a project</div>
+      <h2 class="font-display text-[48px] lg:text-[72px] leading-[0.9] mt-3">Let's build the<br>website your<br>reviews <span class="font-serif-it italic">deserve.</span></h2>
+      <p class="mt-6 text-[17px] text-[var(--ink-2)] max-w-[42ch]">Tell us a little about your business. We'll respond within one business day with honest next steps — even if we're not the right studio for you.</p>
+
+      <div class="mt-10 space-y-4 text-[15px]">
+        <div class="flex items-center gap-3"><span class="w-9 h-9 rounded-full bg-white grid place-items-center hairline border">✉</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fd9598919192bd8d9c8f9c9a92939a8f9499d38e8988999492">[email&#160;protected]</a></div>
+        <div class="flex items-center gap-3"><span class="w-9 h-9 rounded-full bg-white grid place-items-center hairline border">☎</span> (832) 555-0139</div>
+        <div class="flex items-center gap-3"><span class="w-9 h-9 rounded-full bg-white grid place-items-center hairline border">◎</span> Houston, Texas · Serving all of TX</div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7">
+      <form id="pg-form" class="bg-white hairline border rounded-[28px] p-6 lg:p-10 shadow-soft" novalidate>
+        <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+          <div class="font-display text-[22px]">Project inquiry</div>
+          <div class="chip"><span class="dot"></span> Secure &amp; private</div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div>
+            <label class="label" for="name">Your name</label>
+            <input id="name" name="name" class="field" placeholder="Alex Rivera" required>
+            <div class="err">Please enter your name.</div>
+          </div>
+          <div>
+            <label class="label" for="business">Business name</label>
+            <input id="business" name="business" class="field" placeholder="Iron Hand Roofing" required>
+            <div class="err">What's your business called?</div>
+          </div>
+          <div>
+            <label class="label" for="email">Email</label>
+            <input id="email" name="email" type="email" class="field" placeholder="you@business.com" required>
+            <div class="err">Please enter a valid email.</div>
+          </div>
+          <div>
+            <label class="label" for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" class="field" placeholder="(832) 555-0199" required>
+            <div class="err">Please enter a phone number.</div>
+          </div>
+          <div class="md:col-span-2">
+            <label class="label" for="website">Current website or online presence</label>
+            <input id="website" name="website" class="field" placeholder="https://...  or  'Just a Facebook page'">
+          </div>
+          <div class="md:col-span-2">
+            <label class="label" for="need">What do you need help with?</label>
+            <select id="need" name="need" class="field" required>
+              <option value="">Choose one…</option>
+              <option>Brand-new website from scratch</option>
+              <option>Redesign of an existing site</option>
+              <option>Landing page for ads</option>
+              <option>Ongoing care &amp; SEO</option>
+              <option>Not sure yet — let's talk</option>
+            </select>
+            <div class="err">Pick the closest match.</div>
+          </div>
+          <div class="md:col-span-2">
+            <label class="label" for="message">A little about your business</label>
+            <textarea id="message" name="message" rows="5" class="field" placeholder="What you do, who you serve, what's frustrating about your current site…"></textarea>
+          </div>
+        </div>
+        <div class="mt-7 flex items-center justify-between flex-wrap gap-4">
+          <p class="text-[12px] muted max-w-[48ch]">By sending this, you agree to be contacted about your inquiry. We never share your info.</p>
+          <button type="submit" class="btn-primary">Send inquiry →</button>
+        </div>
+      </form>
+
+      <div id="pg-success" class="hidden bg-white hairline border rounded-[28px] p-10 shadow-soft text-center">
+        <div class="mx-auto w-16 h-16 rounded-full grid place-items-center" style="background:linear-gradient(135deg,#FF8A5B,#C9A25A);color:#fff;font-size:28px">✓</div>
+        <h3 class="font-display text-[36px] mt-6">Message received.</h3>
+        <p class="muted mt-3 max-w-[42ch] mx-auto">Thanks for reaching out. We'll reply within one business day from <b><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d55585151527d4d5c4f5c5a52535a4f5459134e4948595452">[email&#160;protected]</a></b>. In the meantime, keep earning those five-star reviews.</p>
+        <button onclick="resetForm()" class="btn-ghost mt-6">Send another →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-[var(--cream)] pt-20 pb-10">
+  <div class="max-w-[1360px] mx-auto px-6 lg:px-10">
+    <div class="wordmark text-[clamp(60px,14vw,220px)] leading-[0.85]">Paragon<br><span class="font-serif-it italic" style="color:#C9A25A">Grid Studio.</span></div>
+
+    <div class="mt-16 grid lg:grid-cols-12 gap-10 border-t pt-10" style="border-color:#ffffff1f">
+      <div class="lg:col-span-5">
+        <p class="text-[15px] max-w-[42ch]" style="color:#c8c0af">Trust-first websites for Houston's best local businesses. Designed and coded by hand, in Texas.</p>
+        <div class="mt-6 flex gap-3">
+          <a class="btn-ghost" style="background:#ffffff08;color:#F7F2EA;border-color:#ffffff1f;padding:.55rem 1rem;font-size:13px" href="#contact">Start a project →</a>
+        </div>
+      </div>
+      <div class="lg:col-span-2">
+        <div class="text-[11px] uppercase tracking-[.14em]" style="color:#8a7f66">Studio</div>
+        <ul class="mt-4 space-y-2 text-[14px]">
+          <li><a href="#work" class="ul">Work</a></li>
+          <li><a href="#services" class="ul">Services</a></li>
+          <li><a href="#process" class="ul">Process</a></li>
+          <li><a href="#pricing" class="ul">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <div class="text-[11px] uppercase tracking-[.14em]" style="color:#8a7f66">Company</div>
+        <ul class="mt-4 space-y-2 text-[14px]">
+          <li><a href="#faq" class="ul">FAQ</a></li>
+          <li><a href="#contact" class="ul">Contact</a></li>
+          <li><a class="ul" href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a class="ul" href="terms-of-use.html">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-3">
+        <div class="text-[11px] uppercase tracking-[.14em]" style="color:#8a7f66">Contact</div>
+        <ul class="mt-4 space-y-2 text-[14px]" style="color:#c8c0af">
+          <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="95fdf0f9f9fad5e5f4e7f4f2fafbf2e7fcf1bbe6e1e0f1fcfa">[email&#160;protected]</a></li>
+          <li>(832) 555-0139</li>
+          <li>Houston, Texas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 flex items-center justify-between text-[12px] flex-wrap gap-2" style="color:#8a7f66">
+      <div>© 2026 Paragon Grid Studio. All rights reserved.</div>
+      <div>Designed &amp; built in Houston, TX.</div>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  },{threshold:0, rootMargin:'0px 0px -5% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // Safety net: force-show anything still hidden after 600ms (handles slow CDN / edge cases)
+  window.addEventListener('load', ()=>{
+    setTimeout(()=>{ document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }, 600);
+  });
+  // And immediately show anything already in viewport on first paint
+  requestAnimationFrame(()=>{
+    document.querySelectorAll('.reveal').forEach(el=>{
+      const r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
+    });
+  });
+
+  const form = document.getElementById('pg-form');
+  const success = document.getElementById('pg-success');
+  function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    let ok = true;
+    ['name','business','email','phone','need'].forEach(id=>{
+      const f = document.getElementById(id);
+      let bad = !f.value.trim();
+      if(id==='email' && !bad) bad = !validEmail(f.value.trim());
+      f.classList.toggle('invalid', bad);
+      if(bad) ok = false;
+    });
+    if(!ok) return;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+    success.scrollIntoView({behavior:'smooth', block:'center'});
+    // TODO: POST to /api/inquiry with JSON of form fields
+  });
+  form.querySelectorAll('.field').forE
