@@ -980,13 +980,18 @@
         </div>
         <div class="grid md:grid-cols-2 gap-5">
           <div>
-            <label class="label" for="name">Your name</label>
-            <input id="name" name="name" class="field" placeholder="John Doe" required>
-            <div class="err">Please enter your name.</div>
+            <label class="label" for="firstname">First name</label>
+            <input id="firstname" name="firstname" class="field" placeholder="John" required>
+            <div class="err">Please enter your first name.</div>
           </div>
           <div>
-            <label class="label" for="business">Business name</label>
-            <input id="business" name="business" class="field" placeholder="Iron Hand Roofing" required>
+            <label class="label" for="lastname">Last name</label>
+            <input id="lastname" name="lastname" class="field" placeholder="Doe" required>
+            <div class="err">Please enter your last name.</div>
+          </div>
+          <div class="md:col-span-2">
+            <label class="label" for="company">Business name</label>
+            <input id="company" name="company" class="field" placeholder="Iron Hand Roofing" required>
             <div class="err">What's your business called?</div>
           </div>
           <div>
@@ -1004,8 +1009,8 @@
             <input id="website" name="website" class="field" placeholder="https://...  or  'Just a Facebook page'">
           </div>
           <div class="md:col-span-2">
-            <label class="label" for="need">What do you need help with?</label>
-            <select id="need" name="need" class="field" required>
+            <label class="label" for="what_do_you_need_help_with">What do you need help with?</label>
+            <select id="what_do_you_need_help_with" name="what_do_you_need_help_with" class="field" required>
               <option value="">Choose one…</option>
               <option>Brand-new website from scratch</option>
               <option>Redesign of an existing site</option>
@@ -1019,6 +1024,14 @@
             <label class="label" for="message">A little about your business</label>
             <textarea id="message" name="message" rows="5" class="field" placeholder="What you do, who you serve, what's frustrating about your current site…"></textarea>
           </div>
+        </div>
+        <!-- Honeypot: invisible to humans, bots fill it. If filled, submission is silently dropped. -->
+        <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+          <label for="pg-hp-website">Leave this field blank</label>
+          <input type="text" id="pg-hp-website" name="pg_hp_website" tabindex="-1" autocomplete="off">
+        </div>
+        <div id="pg-error" class="hidden mt-6 rounded-2xl border p-4 text-[14px]" style="background:#FFF1EC;border-color:#F2B79E;color:#8a3a23">
+          Something went wrong sending your inquiry. Please email <a href="mailto:Sergio@paragongridstudio.com" class="underline font-medium">Sergio@paragongridstudio.com</a> directly and we'll respond within one business day.
         </div>
         <div class="mt-7 flex items-center justify-between flex-wrap gap-4">
           <p class="text-[12px] muted max-w-[48ch]">By sending this, you agree to be contacted about your inquiry. We never share your info.</p>
@@ -1102,13 +1115,39 @@
     });
   });
 
+  // HubSpot Forms API integration
+  const HUBSPOT_PORTAL_ID = '51302353';
+  const HUBSPOT_FORM_ID = 'e6daeb96-a772-442b-85d8-c6b760834b4d';
+  const HUBSPOT_ENDPOINT = `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`;
+
+  // Field IDs match HubSpot internal property names exactly so payload assembly is 1:1.
+  const HS_REQUIRED = ['firstname','lastname','company','email','phone','what_do_you_need_help_with'];
+  const HS_ALL      = ['firstname','lastname','company','email','phone','website','what_do_you_need_help_with','message'];
+
   const form = document.getElementById('pg-form');
   const success = document.getElementById('pg-success');
+  const errorBox = document.getElementById('pg-error');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitBtnDefault = submitBtn.innerHTML;
+
   function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
-  form.addEventListener('submit', (e)=>{
+
+  function showSuccess(){
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+    success.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  form.addEventListener('submit', async (e)=>{
     e.preventDefault();
+
+    // Honeypot — silently drop bot submissions but show the success state so bots don't retry.
+    const honeypot = document.getElementById('pg-hp-website');
+    if(honeypot && honeypot.value){ showSuccess(); return; }
+
+    // Validate required fields
     let ok = true;
-    ['name','business','email','phone','need'].forEach(id=>{
+    HS_REQUIRED.forEach(id=>{
       const f = document.getElementById(id);
       let bad = !f.value.trim();
       if(id==='email' && !bad) bad = !validEmail(f.value.trim());
@@ -1116,9 +1155,51 @@
       if(bad) ok = false;
     });
     if(!ok) return;
-    form.classList.add('hidden');
-    success.classList.remove('hidden');
-    success.scrollIntoView({behavior:'smooth', block:'center'});
-    // TODO: POST to /api/inquiry with JSON of form fields
+
+    // Build HubSpot Forms API payload
+    const fields = HS_ALL.map(name => ({
+      name,
+      value: (document.getElementById(name).value || '').trim()
+    }));
+    const payload = {
+      fields,
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title
+      }
+    };
+
+    errorBox.classList.add('hidden');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending…';
+
+    try {
+      const res = await fetch(HUBSPOT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if(res.status === 200 || res.status === 204){
+        showSuccess();
+      } else {
+        throw new Error('HubSpot returned ' + res.status);
+      }
+    } catch (err) {
+      errorBox.classList.remove('hidden');
+      errorBox.scrollIntoView({behavior:'smooth', block:'center'});
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = submitBtnDefault;
+    }
   });
+
+  function resetForm(){
+    form.reset();
+    success.classList.add('hidden');
+    form.classList.remove('hidden');
+    errorBox.classList.add('hidden');
+    HS_REQUIRED.forEach(id=>document.getElementById(id).classList.remove('invalid'));
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = submitBtnDefault;
+  }
+  window.resetForm = resetForm;
   form.querySelectorAll('.field').forE
