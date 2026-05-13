@@ -1202,4 +1202,16 @@
     submitBtn.innerHTML = submitBtnDefault;
   }
   window.resetForm = resetForm;
-  form.querySelectorAll('.field').forE
+
+  // Clear the invalid state as soon as the user starts correcting a field.
+  form.querySelectorAll('.field').forEach(el => {
+    el.addEventListener('input', () => el.classList.remove('invalid'));
+    el.addEventListener('change', () => el.classList.remove('invalid'));
+  });
+
+  // TEMP: verify the script parsed and the submit handler attached.
+  console.log('form handler attached');
+</script>
+</body>
+</html>
+
